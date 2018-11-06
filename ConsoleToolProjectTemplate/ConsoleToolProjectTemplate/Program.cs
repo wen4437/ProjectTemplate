@@ -32,7 +32,7 @@ namespace ConsoleToolProjectTemplate
             {
                 log.Error("An error occurred while executing Main. Exception: {0}", ex.ToString());
             }
-            Console.ReadKey();
+            Console.WriteLine("Finished.");
         }
     }
 }

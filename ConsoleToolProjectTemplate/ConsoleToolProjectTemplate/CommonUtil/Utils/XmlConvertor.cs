@@ -26,13 +26,6 @@ namespace System.My.CommonUtil
             SETTINGS.CheckCharacters = false;
         }
 
-        /// <summary>
-        /// Set whether use cache mode.
-        /// If you set this value to true, then we will cache memory that we use.
-        /// We will reuse it when we serialize or deserialize object.
-        /// If you serialize or deserialize objects frequently, set this value to true.
-        /// Default value is false.
-        /// </summary>
         public static bool IsCache
         {
             get { return mIsCache; }
@@ -88,10 +81,6 @@ namespace System.My.CommonUtil
             }
             finally
             {
-                // We do not cache large stream
-                //
-                //HACK: Close the Memory Stream accordingly and use the DCL design pattern to ENQueue
-                //      the stream queue 
                 if (stream != null)
                 {
                     if (mIsCache
@@ -177,10 +166,6 @@ namespace System.My.CommonUtil
             }
             finally
             {
-                // We do not cache large stream
-                //
-                //HACK: Close the Memory Stream accordingly and use the DCL design pattern to ENQueue
-                //      the stream queue 
                 if (stream != null)
                 {
                     if (mIsCache
