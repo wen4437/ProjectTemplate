@@ -8,3 +8,4 @@ Download the realase folder, you will see some `.zip` files and `.bat` files, do
 
 If you can not install it successfully, you can copy the zip file to your VS template folder manually, generally, the folder path is: `Your Computer\Documents\Visual Studio 20xx\Templates\ProjectTemplates\Visual C#`, copy the file to this folder, and open your visual studio, you can see the templates in your New Project window. See below:
 
+![Alt text](Documents/Images/NewProject.png)
