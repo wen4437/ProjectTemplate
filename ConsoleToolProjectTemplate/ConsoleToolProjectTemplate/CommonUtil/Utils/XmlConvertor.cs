@@ -8,7 +8,7 @@ using System.Xml.Serialization;
 
 namespace System.My.CommonUtil
 {
-    public class XmlUtil
+    public class XmlConvertor
     {
         private static Dictionary<Type, XmlSerializer> mSerializers = new Dictionary<Type, XmlSerializer>();
         private static Queue<MemoryStream> mStreams = new Queue<MemoryStream>();
@@ -17,7 +17,7 @@ namespace System.My.CommonUtil
         private const int DEFAULT_CACHE_SIZE = 10;
         private static bool mIsCache = false;
 
-        static XmlUtil()
+        static XmlConvertor()
         {
             NAMESPACE.Add("", "");
             SETTINGS.Indent = false;

@@ -48,6 +48,26 @@ namespace ConsoleToolProjectTemplate
             }
         }
 
+        public void XML_Demo()
+        {
+            XmlDemo demo = new XmlDemo();
+            demo.ID = "ID";
+            demo.Name = "ABC";
+
+            XmlValueDemo value1 = new XmlValueDemo();
+            value1.Value = "TestValue_1";
+            XmlValueDemo value2 = new XmlValueDemo();
+            value2.Value = "TestValue_2";
+
+            demo.Values = new List<XmlValueDemo>();
+            demo.Values.Add(value1);
+            demo.Values.Add(value2);
+
+            string xml = XmlConvertor.ConvertToXml(demo);
+
+            XmlDemo demoObj = XmlConvertor.ConvertToObject<XmlDemo>(xml);
+        }
+
         //public void Client_Demo()
         //{
         //    var context0 = ClientContextFactory.CreateContext();
