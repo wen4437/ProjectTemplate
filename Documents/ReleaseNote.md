@@ -1,5 +1,8 @@
 # Release Note
 
+## 2018-11-13
+* Update Query Service class
+
 ## 2018-11-06
 ### Template For .Net 3.5
 * Add csv reader class (CSVReader)
