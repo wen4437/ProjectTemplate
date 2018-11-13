@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.My.CommonUtil;
+using System.Xml.Serialization;
 
 namespace ConsoleToolProjectTemplate
 {
@@ -29,5 +30,22 @@ namespace ConsoleToolProjectTemplate
 
         [Column("Test Column")]
         public string TestColumn { get; set; }
+    }
+
+    [XmlRoot("XmlDemoRoot")]
+    public class XmlDemo
+    {
+        [XmlElement("ID")]
+        public string ID { get; set; }
+        [XmlElement("Name")]
+        public string Name { get; set; }
+        [XmlElement("XmlValueDemo")]
+        public List<XmlValueDemo> Values { get; set; }
+    }
+
+    public class XmlValueDemo
+    {
+        [XmlAttribute("Value")]
+        public string Value;
     }
 }

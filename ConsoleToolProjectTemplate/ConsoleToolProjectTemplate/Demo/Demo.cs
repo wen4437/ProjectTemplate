@@ -40,12 +40,34 @@ namespace ConsoleToolProjectTemplate
 
         public void Query_Demo()
         {
-            using (QueryService query = QueryService.GetQueryService("[connectionString]"))
+            using (QueryService query = QueryService.CreateQueryService("Connection string"))
             {
                 query.ClearParameters();
                 query.SetCommandParameter("@Demo", "DemoValue");
-                DBDemo demo = query.GetResult<DBDemo>("select * from Demo where Title=@Demo");
+                DBDemo demo = query.GetSingleResult<DBDemo>("select * from Demo where Title=@Demo");
             }
+        }
+
+        public void XML_Demo()
+        {
+            XmlDemo demo = new XmlDemo();
+            demo.ID = "ID";
+            demo.Name = "ABC";
+
+            XmlValueDemo value1 = new XmlValueDemo();
+            value1.Value = "TestValue_1";
+            XmlValueDemo value2 = new XmlValueDemo();
+            value2.Value = "TestValue_2";
+
+            demo.Values = new List<XmlValueDemo>();
+            demo.Values.Add(value1);
+            demo.Values.Add(value2);
+
+            //Convert object to xml string.
+            string xml = XmlConvertor.ConvertToXml(demo);
+
+            //Convert xml string to object.
+            XmlDemo demoObj = XmlConvertor.ConvertToObject<XmlDemo>(xml);
         }
 
         //public void Client_Demo()
