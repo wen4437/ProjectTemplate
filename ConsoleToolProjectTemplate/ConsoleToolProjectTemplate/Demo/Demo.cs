@@ -40,11 +40,11 @@ namespace ConsoleToolProjectTemplate
 
         public void Query_Demo()
         {
-            using (QueryService query = QueryService.GetQueryService("[connectionString]"))
+            using (QueryService query = QueryService.CreateQueryService("Connection string"))
             {
                 query.ClearParameters();
                 query.SetCommandParameter("@Demo", "DemoValue");
-                DBDemo demo = query.GetResult<DBDemo>("select * from Demo where Title=@Demo");
+                DBDemo demo = query.GetSingleResult<DBDemo>("select * from Demo where Title=@Demo");
             }
         }
 

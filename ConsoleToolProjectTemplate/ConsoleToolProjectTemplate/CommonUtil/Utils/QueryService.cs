@@ -11,65 +11,16 @@ namespace System.My.CommonUtil
     public class QueryService : IDisposable
     {
         private static QueryService mQuery = null;
+        private static object lockObj = new object();
+        private static string mConnString = string.Empty;
+        private static SqlConnection mConnection = null;
+        private static SqlCommand mCommand = null;
 
-        private SqlConnection mConnection = null;
-        private SqlCommand mCommand = null;
-        private string mConnectionStr;
-
-        private static object obj = new object();
-
-        private SqlCommand Command
-        {
-            get
-            {
-                if (mConnection == null || mCommand == null || mConnection.State == ConnectionState.Closed || mConnection.State == ConnectionState.Broken)
-                {
-                    InitConnection();
-                }
-                return mCommand;
-            }
-        }
-
-        private QueryService(string connection)
-        {
-            this.mConnectionStr = connection;
-            InitConnection();
-        }
-
-        private void InitConnection()
-        {
-            try
-            {
-                if (mConnection != null)
-                {
-                    mConnection.Dispose();
-                }
-                if (mCommand != null)
-                {
-                    mCommand.Dispose();
-                }
-
-                mConnection = new SqlConnection(this.mConnectionStr);
-                mConnection.Open();
-                mCommand = new SqlCommand();
-                mCommand.Connection = mConnection;
-            }
-            catch
-            {
-                throw;
-            }
-        }
-
-        public static void InitQueryService(string connection)
-        {
-            GetQueryService(connection);
-        }
-
-        public static QueryService GetQueryService(string connection)
+        public static QueryService CreateQueryService(string connection)
         {
             if (mQuery == null)
             {
-                lock (obj)
+                lock (lockObj)
                 {
                     if (mQuery == null)
                     {
@@ -77,24 +28,52 @@ namespace System.My.CommonUtil
                     }
                 }
             }
+            else
+            {
+                if (mConnection.State == ConnectionState.Broken || mConnection.State == ConnectionState.Closed)
+                {
+                    mConnection.Dispose();
+                    mConnection = new SqlConnection(mConnString);
+                    mConnection.Open();
+                    if (mCommand != null)
+                    {
+                        mCommand.Dispose();
+                        mCommand = mConnection.CreateCommand();
+                    }
+                }
+            }
             return mQuery;
         }
 
-        public static QueryService GetQueryService()
+        public static QueryService CreateQueryService()
         {
-            return mQuery;
+            return CreateQueryService(mConnString);
+        }
+
+        public void SetConnectionString(string connection)
+        {
+            mConnString = connection;
+        }
+
+        private QueryService() { }
+
+        private QueryService(string connection)
+        {
+            mConnString = connection;
+            mConnection = new SqlConnection(mConnString);
+            mConnection.Open();
         }
 
         public List<T> GetResults<T>(string command) where T : new()
         {
             List<T> list = new List<T>();
-            lock (obj)
+            lock (lockObj)
             {
                 SqlDataReader reader = null;
                 try
                 {
-                    Command.CommandText = command;
-                    reader = Command.ExecuteReader();
+                    mCommand.CommandText = command;
+                    reader = mCommand.ExecuteReader();
                     while (reader.Read())
                     {
                         T temp = new T();
@@ -131,16 +110,16 @@ namespace System.My.CommonUtil
             return list;
         }
 
-        public T GetResult<T>(string command) where T : new()
+        public T GetSingleResult<T>(string command) where T : new()
         {
             T temp = new T();
-            lock (obj)
+            lock (lockObj)
             {
                 SqlDataReader reader = null;
                 try
                 {
-                    Command.CommandText = command;
-                    reader = Command.ExecuteReader();
+                    mCommand.CommandText = command;
+                    reader = mCommand.ExecuteReader();
                     if (reader.Read())
                     {
                         foreach (PropertyInfo property in typeof(T).GetProperties())
@@ -178,13 +157,13 @@ namespace System.My.CommonUtil
         public int GetCount(string command)
         {
             int temp = -1;
-            lock (obj)
+            lock (lockObj)
             {
                 SqlDataReader reader = null;
                 try
                 {
-                    Command.CommandText = command;
-                    reader = Command.ExecuteReader();
+                    mCommand.CommandText = command;
+                    reader = mCommand.ExecuteReader();
                     if (reader.Read())
                     {
                         temp = reader.IsDBNull(0) ? -1 : reader.GetInt32(0);
@@ -207,12 +186,12 @@ namespace System.My.CommonUtil
 
         public void SetCommandParameter(string key, object value)
         {
-            Command.Parameters.AddWithValue(key, value);
+            mCommand.Parameters.AddWithValue(key, value);
         }
 
         public void ClearParameters()
         {
-            Command.Parameters.Clear();
+            mCommand.Parameters.Clear();
         }
 
         public void Dispose()
@@ -220,11 +199,14 @@ namespace System.My.CommonUtil
             if (mCommand != null)
             {
                 mCommand.Dispose();
+                mCommand = null;
             }
             if (mConnection != null)
             {
+                mConnection = null;
                 mConnection.Dispose();
             }
+            mQuery = null;
         }
     }
 }
