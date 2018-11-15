@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Reflection;
 using System.Text;
 
@@ -13,11 +14,17 @@ namespace System.My.CommonUtil
         private static QueryService mQuery = null;
         private static object lockObj = new object();
         private static string mConnString = string.Empty;
+        private static SqlCommandCreator mCommandCreator = null;
         private static SqlConnection mConnection = null;
         private static SqlCommand mCommand = null;
 
         public static QueryService CreateQueryService(string connection)
         {
+            if (string.IsNullOrEmpty(connection))
+            {
+                throw new Exception("Cannot create query object, because connection string is empty.");
+            }
+
             if (mQuery == null)
             {
                 lock (lockObj)
@@ -55,13 +62,43 @@ namespace System.My.CommonUtil
             mConnString = connection;
         }
 
-        private QueryService() { }
+        public QueryService()
+        {
+            mCommandCreator = new SqlCommandCreator();
+        }
 
         private QueryService(string connection)
         {
+            mCommandCreator = new SqlCommandCreator();
             mConnString = connection;
             mConnection = new SqlConnection(mConnString);
             mConnection.Open();
+            mCommand = mConnection.CreateCommand();
+        }
+
+        public List<T> GetResults<T>(Expression<Func<T, object>>[] select, Expression<Func<T, object>> where) where T : new()
+        {
+            return GetResults<T>(default(T), select, where);
+        }
+
+        public List<T> GetResults<T>(T t, Expression<Func<T, object>>[] select, Expression<Func<T, object>> where) where T : new()
+        {
+            string selectCommand = mCommandCreator.FillSelectCommand(select);
+            string whereCommand = mCommandCreator.FillWhereCommand(where, t);
+            ColumnAttribute attr = (ColumnAttribute)typeof(T).GetCustomAttributes(typeof(ColumnAttribute), false).FirstOrDefault();
+            string tableName = string.Empty;
+            if (attr == null)
+            {
+                tableName = string.Format("[{0}]", typeof(T).Name);
+            }
+            else
+            {
+                tableName = string.Format("[{0}]", attr.Name);
+            }
+
+            string command = string.Format("SELECT {0} FROM {1} WITH(NOLOCK) WHERE {2}", selectCommand, tableName, whereCommand);
+
+            return GetResults<T>(command);
         }
 
         public List<T> GetResults<T>(string command) where T : new()
