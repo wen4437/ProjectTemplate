@@ -114,7 +114,9 @@
     <Compile Include="CommonUtil\Utils\ConfigurationUtil.cs" />
     <Compile Include="CommonUtil\Utils\CSVReader.cs" />
     <Compile Include="CommonUtil\Utils\CSVWriter.cs" />
-    <Compile Include="CommonUtil\Utils\QueryService.cs" />
+    <Compile Include="CommonUtil\Utils\Query\ModelBase.cs" />
+    <Compile Include="CommonUtil\Utils\Query\QueryService.cs" />
+    <Compile Include="CommonUtil\Utils\Query\SqlCommandCreator.cs" />
     <Compile Include="CommonUtil\Utils\XmlConvertor.cs" />
     <Compile Include="Demo\Demo.cs" />
     <Compile Include="Demo\DemoObjectModule.cs" />

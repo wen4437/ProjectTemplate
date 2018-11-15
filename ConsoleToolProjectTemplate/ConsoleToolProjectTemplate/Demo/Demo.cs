@@ -48,6 +48,19 @@ namespace ConsoleToolProjectTemplate
             }
         }
 
+        public void Query_Demo_2()
+        {
+            Test test = new Test();
+            QueryService query = QueryService.CreateQueryService("Connection string");
+            List<Test> tList = query.GetResults<Test>(test, test.Select<Test>(t => t.ID, t => t.Name, t => t.Age),
+                test.Where<Test>(
+                    t => t.WhereOr<Test>(
+                        w => w.ID == 1,
+                        w => w.ID == 2
+                    )
+                ));
+        }
+
         public void XML_Demo()
         {
             XmlDemo demo = new XmlDemo();
@@ -77,5 +90,16 @@ namespace ConsoleToolProjectTemplate
         //    var context2 = ClientContextFactory.CreateContext("[WebUrl]", "[User]", "[Password]");
         //    var context3 = ClientContextFactory.CreateContext("[WebUrl]", "[User]", "[Password]", SPMode.Local);
         //}
+    }
+
+    [Column("Test")]
+    public class Test : ModelBase
+    {
+        [Column("a")]
+        public int ID { get; set; }
+        [Column("b")]
+        public string Name { get; set; }
+        [Column("c")]
+        public string Age { get; set; }
     }
 }
