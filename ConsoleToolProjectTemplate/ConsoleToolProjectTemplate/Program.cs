@@ -25,7 +25,7 @@ namespace ConsoleToolProjectTemplate
 
             try
             {
-                Config config = ConfigurationUtil.GetConfiguration<Config>(args[0]);
+                Config config = ConfigurationUtil.GetConfiguration<Config>(commandPath);
                 //Your Code.
             }
             catch (Exception ex)

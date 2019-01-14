@@ -240,8 +240,8 @@ namespace System.My.CommonUtil
             }
             if (mConnection != null)
             {
-                mConnection = null;
                 mConnection.Dispose();
+                mConnection = null;
             }
             mQuery = null;
         }

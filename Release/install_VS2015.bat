@@ -7,4 +7,6 @@ set "destPath=%USERPROFILE%\Documents\Visual Studio 2015\Templates\ProjectTempla
 
 Copy "%commonSourceFile%" "%destPath%" /l
 Copy "%net35SourceFile%" "%destPath%" /l
+
+echo Install finished, please restart your Visual Studio.
 pause
