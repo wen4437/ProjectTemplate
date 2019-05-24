@@ -4,7 +4,7 @@
 Project Template is a console project template in visual studio, you can use it to create a console project in order to use common method like csv reader/writer/log/database and so on(Hope my continue).
 
 # Release Notes
-You can click [Release Notes](Documents/ReleaseNote.md) to see details.
+You can click [Release Notes](https://github.com/wen4437/ProjectTemplate/releases) to see details.
 
 # How to use it
 Download the realase folder, you will see some `.zip` files and `.bat` files, double click the `.bat` file which depend on your visual studio version to install the template, and then, open your visual studio, you can see the templates in your New Project window.
