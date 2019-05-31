@@ -253,11 +253,11 @@ namespace System.My.CommonUtil
         }
     }
 
-    public class BooleanOperation<T1, Operator, T3>
+    public class BooleanOperation<T1, Operator, T2>
     {
         public T1 Left { get; set; }
         public Operator BoolOperator { get; set; }
-        public T3 Right { get; set; }
+        public T2 Right { get; set; }
 
         public override string ToString()
         {
