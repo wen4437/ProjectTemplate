@@ -68,6 +68,11 @@ namespace System.My.CommonUtil
             XmlConfigurator.ConfigureAndWatch(logCfg);
         }
 
+        /// <summary>
+        /// 输出到Console和Log file
+        /// </summary>
+        /// <param name="message"></param>
+        /// <param name="format"></param>
         public void Info(string message, params object[] format)
         {
             lock(obj)
@@ -76,6 +81,11 @@ namespace System.My.CommonUtil
             }
         }
 
+        /// <summary>
+        /// 只输出到Log file
+        /// </summary>
+        /// <param name="message"></param>
+        /// <param name="format"></param>
         public void Debug(string message, params object[] format)
         {
             lock (obj)
@@ -84,6 +94,11 @@ namespace System.My.CommonUtil
             }
         }
 
+        /// <summary>
+        /// 输出到Log file和Console黄色输出
+        /// </summary>
+        /// <param name="message"></param>
+        /// <param name="format"></param>
         public void Warn(string message, params object[] format)
         {
             lock (obj)
@@ -92,6 +107,11 @@ namespace System.My.CommonUtil
             }
         }
 
+        /// <summary>
+        /// 输出到Log file
+        /// </summary>
+        /// <param name="message"></param>
+        /// <param name="format"></param>
         public void Error(string message, params object[] format)
         {
             lock (obj)
@@ -100,6 +120,12 @@ namespace System.My.CommonUtil
             }
         }
 
+        /// <summary>
+        /// 输出到Log file和Console红色异常信息输出
+        /// </summary>
+        /// <param name="message"></param>
+        /// <param name="ex"></param>
+        /// <param name="format"></param>
         public void Error(string message, Exception ex, params object[] format)
         {
             lock (obj)

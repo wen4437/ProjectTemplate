@@ -30,9 +30,12 @@ namespace ConsoleToolProjectTemplate
             }
             catch (Exception ex)
             {
-                log.Error("An error occurred while executing Main. Exception: {0}", ex.ToString());
+                log.Error("An error occurred while executing Main. Exception: {0}", ex);
             }
-            Console.WriteLine("Finished.");
+            log.Info("Finished.");
+            log.Debug("********************The End********************");
+            Console.WriteLine("Press any key to continue...");
+            Console.ReadKey();
         }
     }
 }
