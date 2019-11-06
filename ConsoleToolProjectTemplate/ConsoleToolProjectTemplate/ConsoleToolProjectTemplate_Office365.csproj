@@ -110,10 +110,11 @@
   <ItemGroup>
     <Compile Include="CommonUtil\Utils\ClientContextFactory.cs" />
     <Compile Include="CommonUtil\Utils\CSVBase.cs" />
-    <Compile Include="CommonUtil\Utils\Logger.cs" />
     <Compile Include="CommonUtil\Utils\ConfigurationUtil.cs" />
     <Compile Include="CommonUtil\Utils\CSVReader.cs" />
     <Compile Include="CommonUtil\Utils\CSVWriter.cs" />
+    <Compile Include="CommonUtil\Utils\Log\ErrorMessageColoredConsoleAppender.cs" />
+    <Compile Include="CommonUtil\Utils\Log\Logger.cs" />
     <Compile Include="CommonUtil\Utils\Query\ModelBase.cs" />
     <Compile Include="CommonUtil\Utils\Query\QueryService.cs" />
     <Compile Include="CommonUtil\Utils\Query\SqlCommandCreator.cs" />

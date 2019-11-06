@@ -130,7 +130,14 @@ namespace System.My.CommonUtil
         {
             lock (obj)
             {
-                log.Error(string.Format(message, format), ex);
+                if (format == null || format.Length <= 0)
+                {
+                    log.Error(message, ex);
+                }
+                else
+                {
+                    log.Error(string.Format(message, format), ex);
+                }
             }
         }
 
