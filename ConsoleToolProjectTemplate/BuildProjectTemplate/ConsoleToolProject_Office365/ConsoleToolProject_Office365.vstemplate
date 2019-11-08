@@ -1,0 +1,68 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<VSTemplate Version="3.0.0" Type="Project" xmlns="http://schemas.microsoft.com/developer/vstemplate/2005" xmlns:sdk="http://schemas.microsoft.com/developer/vstemplate-sdkextension/2010">
+  <TemplateData>
+    <Name>Console Tool Project for Office 365</Name>
+    <Description>Console Tool Project for Office 365</Description>
+    <Icon>ConsoleToolProject_Office365.ico</Icon>
+    <ProjectType>CSharp</ProjectType>
+    <RequiredFrameworkVersion>4.5</RequiredFrameworkVersion>
+    <SortOrder>1000</SortOrder>
+    <TemplateID>0f4afa49-1c67-4d7e-b18a-d4f7eee2e936</TemplateID>
+    <CreateNewFolder>true</CreateNewFolder>
+    <DefaultName>ConsoleToolProject</DefaultName>
+    <ProvideDefaultName>true</ProvideDefaultName>
+  </TemplateData>
+  <TemplateContent>
+    <Project File="ConsoleToolProjectTemplate_Office365.csproj" ReplaceParameters="true">
+      <ProjectItem ReplaceParameters="true" TargetFileName="Properties\AssemblyInfo.cs">AssemblyInfo.cs</ProjectItem>
+      <ProjectItem ReplaceParameters="true" TargetFileName="App.config">App.config</ProjectItem>
+      <Folder Name="CommonUtil" TargetFolderName="CommonUtil">
+        <Folder Name="Config" TargetFolderName="Config">
+          <ProjectItem ReplaceParameters="true" TargetFileName="config.xml">config.xml</ProjectItem>
+          <ProjectItem ReplaceParameters="true" TargetFileName="log4net.config">log4net.config</ProjectItem>
+        </Folder>
+        <Folder Name="Dlls" TargetFolderName="Dlls">
+          <ProjectItem ReplaceParameters="false" TargetFileName="log4net.dll">log4net.dll</ProjectItem>
+          <ProjectItem ReplaceParameters="false" TargetFileName="Microsoft.Office.Client.Policy.dll">Microsoft.Office.Client.Policy.dll</ProjectItem>
+          <ProjectItem ReplaceParameters="false" TargetFileName="Microsoft.Office.Client.TranslationServices.dll">Microsoft.Office.Client.TranslationServices.dll</ProjectItem>
+          <ProjectItem ReplaceParameters="false" TargetFileName="Microsoft.Office.SharePoint.Tools.dll">Microsoft.Office.SharePoint.Tools.dll</ProjectItem>
+          <ProjectItem ReplaceParameters="false" TargetFileName="Microsoft.Online.SharePoint.Client.Tenant.dll">Microsoft.Online.SharePoint.Client.Tenant.dll</ProjectItem>
+          <ProjectItem ReplaceParameters="false" TargetFileName="Microsoft.ProjectServer.Client.dll">Microsoft.ProjectServer.Client.dll</ProjectItem>
+          <ProjectItem ReplaceParameters="false" TargetFileName="Microsoft.SharePoint.Client.dll">Microsoft.SharePoint.Client.dll</ProjectItem>
+          <ProjectItem ReplaceParameters="false" TargetFileName="Microsoft.SharePoint.Client.DocumentManagement.dll">Microsoft.SharePoint.Client.DocumentManagement.dll</ProjectItem>
+          <ProjectItem ReplaceParameters="false" TargetFileName="Microsoft.SharePoint.Client.Publishing.dll">Microsoft.SharePoint.Client.Publishing.dll</ProjectItem>
+          <ProjectItem ReplaceParameters="false" TargetFileName="Microsoft.SharePoint.Client.Runtime.dll">Microsoft.SharePoint.Client.Runtime.dll</ProjectItem>
+          <ProjectItem ReplaceParameters="false" TargetFileName="Microsoft.SharePoint.Client.Runtime.Windows.dll">Microsoft.SharePoint.Client.Runtime.Windows.dll</ProjectItem>
+          <ProjectItem ReplaceParameters="false" TargetFileName="Microsoft.SharePoint.Client.Search.Applications.dll">Microsoft.SharePoint.Client.Search.Applications.dll</ProjectItem>
+          <ProjectItem ReplaceParameters="false" TargetFileName="Microsoft.SharePoint.Client.Search.dll">Microsoft.SharePoint.Client.Search.dll</ProjectItem>
+          <ProjectItem ReplaceParameters="false" TargetFileName="Microsoft.SharePoint.Client.Taxonomy.dll">Microsoft.SharePoint.Client.Taxonomy.dll</ProjectItem>
+          <ProjectItem ReplaceParameters="false" TargetFileName="Microsoft.SharePoint.Client.UserProfiles.dll">Microsoft.SharePoint.Client.UserProfiles.dll</ProjectItem>
+          <ProjectItem ReplaceParameters="false" TargetFileName="Microsoft.SharePoint.Client.WorkflowServices.dll">Microsoft.SharePoint.Client.WorkflowServices.dll</ProjectItem>
+        </Folder>
+        <Folder Name="Utils" TargetFolderName="Utils">
+          <ProjectItem ReplaceParameters="true" TargetFileName="ClientContextFactory.cs">ClientContextFactory.cs</ProjectItem>
+          <ProjectItem ReplaceParameters="true" TargetFileName="ConfigurationUtil.cs">ConfigurationUtil.cs</ProjectItem>
+          <ProjectItem ReplaceParameters="true" TargetFileName="CSVBase.cs">CSVBase.cs</ProjectItem>
+          <ProjectItem ReplaceParameters="true" TargetFileName="CSVReader.cs">CSVReader.cs</ProjectItem>
+          <ProjectItem ReplaceParameters="true" TargetFileName="CSVWriter.cs">CSVWriter.cs</ProjectItem>
+          <Folder Name="Log" TargetFolderName="Log">
+            <ProjectItem ReplaceParameters="true" TargetFileName="ErrorMessageColoredConsoleAppender.cs">ErrorMessageColoredConsoleAppender.cs</ProjectItem>
+            <ProjectItem ReplaceParameters="true" TargetFileName="Logger.cs">Logger.cs</ProjectItem>
+          </Folder>
+          <Folder Name="Query" TargetFolderName="Query">
+            <ProjectItem ReplaceParameters="true" TargetFileName="ModelBase.cs">ModelBase.cs</ProjectItem>
+            <ProjectItem ReplaceParameters="true" TargetFileName="QueryService.cs">QueryService.cs</ProjectItem>
+            <ProjectItem ReplaceParameters="true" TargetFileName="SqlCommandCreator.cs">SqlCommandCreator.cs</ProjectItem>
+          </Folder>
+          <ProjectItem ReplaceParameters="true" TargetFileName="XmlConvertor.cs">XmlConvertor.cs</ProjectItem>
+        </Folder>
+      </Folder>
+      <Folder Name="Demo" TargetFolderName="Demo">
+        <ProjectItem ReplaceParameters="true" TargetFileName="Demo.cs">Demo.cs</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="DemoObjectModule.cs">DemoObjectModule.cs</ProjectItem>
+      </Folder>
+      <ProjectItem ReplaceParameters="true" TargetFileName="ObjectModule.cs">ObjectModule.cs</ProjectItem>
+      <ProjectItem ReplaceParameters="true" TargetFileName="Program.cs">Program.cs</ProjectItem>
+    </Project>
+  </TemplateContent>
+</VSTemplate>

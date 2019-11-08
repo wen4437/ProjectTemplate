@@ -8,18 +8,18 @@ using System.Security;
 
 namespace System.My.CommonUtil
 {
-    public class ClientContextFactory
+    public class ClientContextFactory : IDisposable
     {
-        private static ClientContext mContext = null;
-        private static object lockObj = new object();
-        private static string cacheWebUrl = string.Empty;
+        private ClientContext mContext = null;
+        private object lockObj = new object();
+        private string cacheWebUrl = string.Empty;
 
-        public static ClientContext CreateContext()
+        public ClientContext CreateContext()
         {
             return CreateContext(cacheWebUrl);
         }
 
-        public static ClientContext CreateContext(string webUrl)
+        public ClientContext CreateContext(string webUrl)
         {
             if (mContext == null)
             {
@@ -35,24 +35,24 @@ namespace System.My.CommonUtil
             return mContext;
         }
 
-        public static ClientContext CreateContext(string webUrl, string user, string password)
+        public ClientContext CreateContext(string webUrl, string user, string password)
         {
             return CreateContext(webUrl, user, password, SPMode.Online);
         }
 
-        public static ClientContext CreateContext(string webUrl, string user, string password, SPMode mode)
+        public ClientContext CreateContext(string webUrl, string user, string password, SPMode mode)
         {
             CreateContext(webUrl);
             SetClientContext(user, password, mode);
             return mContext;
         }
 
-        public static ClientContext ChangeContext(string url, string user, string password)
+        public ClientContext ChangeContext(string url, string user, string password)
         {
             return ChangeContext(url, user, password, SPMode.Online);
         }
 
-        public static ClientContext ChangeContext(string url, string user, string password, SPMode mode)
+        public ClientContext ChangeContext(string url, string user, string password, SPMode mode)
         {
             if (mContext != null && !mContext.Web.Url.Trim('/').Equals(url.Trim('/'), StringComparison.OrdinalIgnoreCase))
             {
@@ -62,12 +62,12 @@ namespace System.My.CommonUtil
             return CreateContext(url, user, password, mode);
         }
 
-        public static void SetClientContext(string user, string password)
+        public void SetClientContext(string user, string password)
         {
             SetClientContext(user, password, SPMode.Online);
         }
 
-        public static void SetClientContext(string user, string password, SPMode mode)
+        public void SetClientContext(string user, string password, SPMode mode)
         {
             if (mContext == null)
             {
@@ -88,7 +88,15 @@ namespace System.My.CommonUtil
                     mContext.Credentials = new NetworkCredential(user, password);
                     break;
             }
-            mContext.ExecuteQuery();
+        }
+
+        public void Dispose()
+        {
+            if (mContext != null)
+            {
+                mContext.Dispose();
+                mContext = null;
+            }
         }
     }
 

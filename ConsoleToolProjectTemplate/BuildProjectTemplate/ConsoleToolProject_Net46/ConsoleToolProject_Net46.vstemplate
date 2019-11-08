@@ -1,0 +1,53 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<VSTemplate Version="3.0.0" Type="Project" xmlns="http://schemas.microsoft.com/developer/vstemplate/2005" xmlns:sdk="http://schemas.microsoft.com/developer/vstemplate-sdkextension/2010">
+  <TemplateData>
+    <Name>Console Tool Project for Net 4.6</Name>
+    <Description>Console Tool Project for Net 4.6</Description>
+    <Icon>ConsoleToolProject_Net46.ico</Icon>
+    <ProjectType>CSharp</ProjectType>
+    <RequiredFrameworkVersion>4.6</RequiredFrameworkVersion>
+    <MaxFrameworkVersion>4.6</MaxFrameworkVersion>
+    <SortOrder>1000</SortOrder>
+    <TemplateID>2125e76d-e6fe-4436-ad52-91210157ce7d</TemplateID>
+    <CreateNewFolder>true</CreateNewFolder>
+    <DefaultName>ConsoleToolProject</DefaultName>
+    <ProvideDefaultName>true</ProvideDefaultName>
+  </TemplateData>
+  <TemplateContent>
+    <Project File="ConsoleToolProjectTemplate_Net46.csproj" ReplaceParameters="true">
+      <ProjectItem ReplaceParameters="true" TargetFileName="Properties\AssemblyInfo.cs">AssemblyInfo.cs</ProjectItem>
+      <ProjectItem ReplaceParameters="true" TargetFileName="App.config">App.config</ProjectItem>
+      <Folder Name="CommonUtil" TargetFolderName="CommonUtil">
+        <Folder Name="Config" TargetFolderName="Config">
+          <ProjectItem ReplaceParameters="true" TargetFileName="config.xml">config.xml</ProjectItem>
+          <ProjectItem ReplaceParameters="true" TargetFileName="log4net.config">log4net.config</ProjectItem>
+        </Folder>
+        <Folder Name="Dlls" TargetFolderName="Dlls">
+          <ProjectItem ReplaceParameters="false" TargetFileName="log4net.dll">log4net.dll</ProjectItem>
+        </Folder>
+        <Folder Name="Utils" TargetFolderName="Utils">
+          <ProjectItem ReplaceParameters="true" TargetFileName="ConfigurationUtil.cs">ConfigurationUtil.cs</ProjectItem>
+          <ProjectItem ReplaceParameters="true" TargetFileName="CSVBase.cs">CSVBase.cs</ProjectItem>
+          <ProjectItem ReplaceParameters="true" TargetFileName="CSVReader.cs">CSVReader.cs</ProjectItem>
+          <ProjectItem ReplaceParameters="true" TargetFileName="CSVWriter.cs">CSVWriter.cs</ProjectItem>
+          <Folder Name="Log" TargetFolderName="Log">
+            <ProjectItem ReplaceParameters="true" TargetFileName="ErrorMessageColoredConsoleAppender.cs">ErrorMessageColoredConsoleAppender.cs</ProjectItem>
+            <ProjectItem ReplaceParameters="true" TargetFileName="Logger.cs">Logger.cs</ProjectItem>
+          </Folder>
+          <Folder Name="Query" TargetFolderName="Query">
+            <ProjectItem ReplaceParameters="true" TargetFileName="ModelBase.cs">ModelBase.cs</ProjectItem>
+            <ProjectItem ReplaceParameters="true" TargetFileName="QueryService.cs">QueryService.cs</ProjectItem>
+            <ProjectItem ReplaceParameters="true" TargetFileName="SqlCommandCreator.cs">SqlCommandCreator.cs</ProjectItem>
+          </Folder>
+          <ProjectItem ReplaceParameters="true" TargetFileName="XmlConvertor.cs">XmlConvertor.cs</ProjectItem>
+        </Folder>
+      </Folder>
+      <Folder Name="Demo" TargetFolderName="Demo">
+        <ProjectItem ReplaceParameters="true" TargetFileName="Demo.cs">Demo.cs</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="DemoObjectModule.cs">DemoObjectModule.cs</ProjectItem>
+      </Folder>
+      <ProjectItem ReplaceParameters="true" TargetFileName="ObjectModule.cs">ObjectModule.cs</ProjectItem>
+      <ProjectItem ReplaceParameters="true" TargetFileName="Program.cs">Program.cs</ProjectItem>
+    </Project>
+  </TemplateContent>
+</VSTemplate>

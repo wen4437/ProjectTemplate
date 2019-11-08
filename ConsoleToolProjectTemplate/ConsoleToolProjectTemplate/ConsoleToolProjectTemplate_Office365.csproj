@@ -4,12 +4,12 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{322285AA-D7FF-4078-8B41-35C689EB8580}</ProjectGuid>
+    <ProjectGuid>{075E88D5-5EDC-4DBB-B214-024D39BD52C0}</ProjectGuid>
     <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>ConsoleToolProjectTemplate</RootNamespace>
     <AssemblyName>ConsoleToolProjectTemplate</AssemblyName>
-    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile />
   </PropertyGroup>
@@ -110,10 +110,11 @@
   <ItemGroup>
     <Compile Include="CommonUtil\Utils\ClientContextFactory.cs" />
     <Compile Include="CommonUtil\Utils\CSVBase.cs" />
-    <Compile Include="CommonUtil\Utils\Logger.cs" />
     <Compile Include="CommonUtil\Utils\ConfigurationUtil.cs" />
     <Compile Include="CommonUtil\Utils\CSVReader.cs" />
     <Compile Include="CommonUtil\Utils\CSVWriter.cs" />
+    <Compile Include="CommonUtil\Utils\Log\ErrorMessageColoredConsoleAppender.cs" />
+    <Compile Include="CommonUtil\Utils\Log\Logger.cs" />
     <Compile Include="CommonUtil\Utils\Query\ModelBase.cs" />
     <Compile Include="CommonUtil\Utils\Query\QueryService.cs" />
     <Compile Include="CommonUtil\Utils\Query\SqlCommandCreator.cs" />
@@ -131,21 +132,51 @@
     <Content Include="CommonUtil\Dlls\log4net.dll">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="CommonUtil\Dlls\Microsoft.Office.Client.Policy.dll" />
-    <Content Include="CommonUtil\Dlls\Microsoft.Office.Client.TranslationServices.dll" />
-    <Content Include="CommonUtil\Dlls\Microsoft.Office.SharePoint.Tools.dll" />
-    <Content Include="CommonUtil\Dlls\Microsoft.Online.SharePoint.Client.Tenant.dll" />
-    <Content Include="CommonUtil\Dlls\Microsoft.ProjectServer.Client.dll" />
-    <Content Include="CommonUtil\Dlls\Microsoft.SharePoint.Client.dll" />
-    <Content Include="CommonUtil\Dlls\Microsoft.SharePoint.Client.DocumentManagement.dll" />
-    <Content Include="CommonUtil\Dlls\Microsoft.SharePoint.Client.Publishing.dll" />
-    <Content Include="CommonUtil\Dlls\Microsoft.SharePoint.Client.Runtime.dll" />
-    <Content Include="CommonUtil\Dlls\Microsoft.SharePoint.Client.Runtime.Windows.dll" />
-    <Content Include="CommonUtil\Dlls\Microsoft.SharePoint.Client.Search.Applications.dll" />
-    <Content Include="CommonUtil\Dlls\Microsoft.SharePoint.Client.Search.dll" />
-    <Content Include="CommonUtil\Dlls\Microsoft.SharePoint.Client.Taxonomy.dll" />
-    <Content Include="CommonUtil\Dlls\Microsoft.SharePoint.Client.UserProfiles.dll" />
-    <Content Include="CommonUtil\Dlls\Microsoft.SharePoint.Client.WorkflowServices.dll" />
+    <Content Include="CommonUtil\Dlls\Microsoft.Office.Client.Policy.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="CommonUtil\Dlls\Microsoft.Office.Client.TranslationServices.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="CommonUtil\Dlls\Microsoft.Office.SharePoint.Tools.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="CommonUtil\Dlls\Microsoft.Online.SharePoint.Client.Tenant.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="CommonUtil\Dlls\Microsoft.ProjectServer.Client.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="CommonUtil\Dlls\Microsoft.SharePoint.Client.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="CommonUtil\Dlls\Microsoft.SharePoint.Client.DocumentManagement.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="CommonUtil\Dlls\Microsoft.SharePoint.Client.Publishing.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="CommonUtil\Dlls\Microsoft.SharePoint.Client.Runtime.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="CommonUtil\Dlls\Microsoft.SharePoint.Client.Runtime.Windows.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="CommonUtil\Dlls\Microsoft.SharePoint.Client.Search.Applications.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="CommonUtil\Dlls\Microsoft.SharePoint.Client.Search.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="CommonUtil\Dlls\Microsoft.SharePoint.Client.Taxonomy.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="CommonUtil\Dlls\Microsoft.SharePoint.Client.UserProfiles.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="CommonUtil\Dlls\Microsoft.SharePoint.Client.WorkflowServices.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

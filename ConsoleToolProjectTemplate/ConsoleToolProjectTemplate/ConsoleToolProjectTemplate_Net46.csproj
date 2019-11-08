@@ -4,12 +4,12 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{604978D2-8D47-4F44-818C-E77F2432835D}</ProjectGuid>
+    <ProjectGuid>{322285AA-D7FF-4078-8B41-35C689EB8580}</ProjectGuid>
     <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>ConsoleToolProjectTemplate</RootNamespace>
     <AssemblyName>ConsoleToolProjectTemplate</AssemblyName>
-    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile />
   </PropertyGroup>
@@ -49,11 +49,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CommonUtil\Utils\CSVBase.cs" />
-    <Compile Include="CommonUtil\Utils\Log\Logger.cs" />
     <Compile Include="CommonUtil\Utils\ConfigurationUtil.cs" />
     <Compile Include="CommonUtil\Utils\CSVReader.cs" />
     <Compile Include="CommonUtil\Utils\CSVWriter.cs" />
     <Compile Include="CommonUtil\Utils\Log\ErrorMessageColoredConsoleAppender.cs" />
+    <Compile Include="CommonUtil\Utils\Log\Logger.cs" />
     <Compile Include="CommonUtil\Utils\Query\ModelBase.cs" />
     <Compile Include="CommonUtil\Utils\Query\QueryService.cs" />
     <Compile Include="CommonUtil\Utils\Query\SqlCommandCreator.cs" />

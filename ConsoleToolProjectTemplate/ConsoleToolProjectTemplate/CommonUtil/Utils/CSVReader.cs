@@ -84,7 +84,7 @@ namespace System.My.CommonUtil
                     {
                         if (value.Contains("&AVE#;"))
                         {
-                            value.Replace("&AVE#;", ",");
+                            value = value.Replace("&AVE#;", ",");
                         }
                         property.SetValue(t, value, new object[] { });
                     }
